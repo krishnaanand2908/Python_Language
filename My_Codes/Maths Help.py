@@ -1,6 +1,3 @@
-from typing import overload
-
-
 def tables():
     print(f"{choice2} x 1 = {choice2 * 1}")
     print(f"{choice2} x 2 = {choice2 * 2}")

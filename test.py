@@ -1,16 +1,12 @@
-import fontstyle
-import os
-try:
-    from googlesearch import search
-except ImportError:
-    print("No module named 'google' found")
-    
-os.system('cls')
+a = int(input('Enter first number'))
+b = int(input('Enter second number'))
 
-while(True):
-    query = str(input(fontstyle.apply('Search Google or type a URL:\n', 'cyan/bold')))
+if a > b:
+    smaller = b
+else:
+    smaller = a
     
-    for j in search(query, tld="co.in", num=10, stop=10, pause=2):
-        print(fontstyle.apply(j, 'purple/bold'))
-    input()
-    os.system('cls')
+for i in range(1, smaller+1):
+    if a%i == 0 and b%i == 0:
+        hcf = i
+print(i)
