@@ -1,38 +1,16 @@
-import os
 import fontstyle
-
-os.system("cls")
-
-def Zpattern():
-    txt = fontstyle.apply(f"Enter the number of starts for Z pattern\n", "bold/underline/yellow")
-    n = int(input(txt))
-    for i in range(n):
-        if i == 0 or i == n-1:
-            print("*"*n)
-        else:
-            for j in range(n-1-i):
-                print(" ", end="")
-            print("*", end="")
-            for k in range(n-i, n):
-                print(" ", end="")
-        print("\n")
-
+import os
+try:
+    from googlesearch import search
+except ImportError:
+    print("No module named 'google' found")
+    
+os.system('cls')
 
 while(True):
-    try:
-        Zpattern()
-    except (ValueError, OverflowError):
-        ign = fontstyle.apply(f"Retry\n", "italic/black/")
-        print(ign)
-    inptxt = fontstyle.apply(f"Press Enter to continue:\n", "Green/bold")
-    inp = input(inptxt)
-    os.system("cls")
-    continue
+    query = str(input(fontstyle.apply('Search Google or type a URL:\n', 'cyan/bold')))
     
-    
-
-
-
-
-                        
-
+    for j in search(query, tld="co.in", num=10, stop=10, pause=2):
+        print(fontstyle.apply(j, 'purple/bold'))
+    input()
+    os.system('cls')

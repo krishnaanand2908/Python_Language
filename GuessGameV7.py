@@ -38,25 +38,25 @@ def guess_game_v5():
         lose = fontstyle.apply("Game Over!", "bold/italic/yellow")
         print(lose)
         print(fontstyle.apply(f"The number was {num}", "blue/bold/underline"))
-        input("Press Enter to continue:\n")
+        input(fontstyle.apply("Press Enter to continue:\n", "blue/bold"))
             
 if __name__ == "__main__":
     while True:
         os.system("CLS")
-        choice_colour = fontstyle.apply("Press Enter to continue or Q to quit!", "bold/italic/green/blue_bg")
+        choice_colour = fontstyle.apply("Press Enter to continue or Q to quit!", "bold/italic/green/underline")
         print(choice_colour)
         choice = input()
         choice = choice.upper()
         if choice == "":
-            guess_game_v5()
+            try:
+                guess_game_v5()
+            except ValueError:
+                print(fontstyle.apply('An Error occured||Please Try Again', 'red/bold/underline'))
+                temp = input(fontstyle.apply('Press Enter to reset the game[No Other Choice HAHA]', 'purple/bold/underline'))
+                continue
         elif choice == "Q":
             bye = fontstyle.apply("|---Please come again soon---|", "bold/italic/white/red_bg")
             print(bye)
             exit()
         else:
             print()
-        
-            
-            
-    
-        
