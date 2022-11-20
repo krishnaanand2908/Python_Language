@@ -14,6 +14,7 @@ def guess_game_v5():
             congo = fontstyle.apply("Congratulations!\nYou have guessed the number!", "bold/italic/white/yellow_bg")
             print(congo)
             print((fontstyle.apply(f"You took {9-guess} turns!", "red/bold")))
+            tempr = input()
             guess = guess + 1
             break
         
@@ -39,6 +40,7 @@ def guess_game_v5():
         print(lose)
         print(fontstyle.apply(f"The number was {num}", "blue/bold/underline"))
         input(fontstyle.apply("Press Enter to continue:\n", "blue/bold"))
+        tempr = input()
             
 if __name__ == "__main__":
     while True:

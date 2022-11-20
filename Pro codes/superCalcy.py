@@ -116,4 +116,38 @@ def factorial():
         else:
             break
         
-factorial()
+def hcf():
+    txtgcd = fontstyle.apply('Enter a rational number:\n', 'cyan/bold')
+    continuetxt=fontstyle.apply('Press ENTER to input another Rational Number', 'purple/bold')
+    while(True):
+        a = int(input(txtgcd))
+        b = int(input(txtgcd))
+        if a > b:
+            smaller = b
+        else:
+            smaller = a
+            
+        for i in range(1, smaller+1):
+            if a%i == 0 and b%i == 0:
+                gcd = i
+        print(fontstyle.apply(f'HCF of {a} and {b} is {gcd}', 'yellow/bold'))
+        choice = input(continuetxt)
+        if choice == '':
+            numx = int(input(txtgcd))
+            if numx < gcd:
+                smaller = numx
+            else:
+                smaller = gcd
+            
+            for j in range(1, smaller+1):
+                if numx%j == 0 and gcd%j == 0:
+                    gcd = j
+            print(fontstyle.apply(f'Required HCF = {gcd}', 'yellow/bold'))
+            continue
+        else:
+            break 
+    
+
+
+hcf()
+            
