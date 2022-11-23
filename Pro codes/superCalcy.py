@@ -1,5 +1,6 @@
 import os
 import fontstyle
+import math
 
 def infinity_add():
 	os.system('cls')
@@ -116,38 +117,133 @@ def factorial():
         else:
             break
         
-def hcf():
-    txtgcd = fontstyle.apply('Enter a rational number:\n', 'cyan/bold')
-    continuetxt=fontstyle.apply('Press ENTER to input another Rational Number', 'purple/bold')
-    while(True):
-        a = int(input(txtgcd))
-        b = int(input(txtgcd))
-        if a > b:
-            smaller = b
-        else:
-            smaller = a
+# def hcf():
+#     txtgcd = fontstyle.apply('Enter a rational number:\n', 'cyan/bold')
+#     continuetxt=fontstyle.apply('Press ENTER to input another Rational Number', 'purple/bold')
+#     os.system('cls')
+#     while(True):
+#         a = int(input(txtgcd))
+#         b = int(input(txtgcd))
+#         if a > b:
+#             smaller = b
+#         else:
+#             smaller = a
             
-        for i in range(1, smaller+1):
-            if a%i == 0 and b%i == 0:
-                gcd = i
-        print(fontstyle.apply(f'HCF of {a} and {b} is {gcd}', 'yellow/bold'))
+#         for i in range(1, smaller+1):
+#             if a%i == 0 and b%i == 0:
+#                 gcd = i
+#         print(fontstyle.apply(f'HCF of {a} and {b} is {gcd}', 'yellow/bold'))
+
+
+# def infinity_hcf():
+#     while(True):
+#         os.system('cls')
+#         temp = input(fontstyle.apply('Press Enter to continue:\n', 'cyan'))
+#         hcf()
+#         choice = str(input(fontstyle.apply('Press Enter to continue else press any key to exit!\n')))
+#         if choice == '':
+#             print(fontstyle.apply('HCF program is re-runing...'))
+#             continue
+#         else:
+#             break
+                    
+
+
+            
+def advance_hcf2():  # hcf and gcd are same thing
+    list1 = []  # Empty list to store all hcf elements
+    os.system('cls')
+    while True:
+        element = input(fontstyle.apply(
+            "Enter integer element or press Enter to display result: ", "cyan/bold"))
+        if element == "":  # checks if user has entered "ENTER"
+            break  # exit the while loop
+        else:
+            element = int(element)  # converting string element into integer
+            list1.append(element)  # adding element to list
+
+    temp_gcd = list1[0]  # assumed first element of list as gcd
+    for i in list1:
+        # comparing gcd with every element if list
+        temp_gcd = math.gcd(temp_gcd, i)
+        
+
+    print(fontstyle.apply(f'Required HCF: {temp_gcd}', 'yellow/bold/underline'))
+    
+def advance_lcm2():
+    list1 = []  # Empty list to store all hcf elements
+    os.system('cls')
+    while True:
+        element = input(fontstyle.apply(
+            "Enter integer element or press Enter to display result: ", 'cyan/bold'))
+        if element == "":  # checks if user has entered "ENTER"
+            break  # exit the while loop
+        else:
+            element = int(element)  # converting string element into integer
+            list1.append(element)  # adding element to list
+
+    temp_lcm = list1[0]  # assumed first element of list as lcm
+    for i in list1:
+        # comparing lcm with every element if list
+        temp_lcm = math.lcm(temp_lcm, i)
+
+    print(fontstyle.apply(f'Required LCM: {temp_lcm}', 'purple/bold/underline'))
+    
+def infinity_exponents():
+    os.system('cls')
+    txtexpo = fontstyle.apply('Enter base value:\n', 'cyan/bold')
+    continuetxt=fontstyle.apply('Press Enter to assign the power value:\n', 'white/bold')
+    num1 = float(input(txtexpo))
+    num2 = float(input(txtexpo))
+    expotxt = (num1 ** num2)
+    print(fontstyle.apply(f'{num1} ^ {num2} = {expotxt}', 'yellow/bold'))
+    while(True):
         choice = input(continuetxt)
         if choice == '':
-            numx = int(input(txtgcd))
-            if numx < gcd:
-                smaller = numx
-            else:
-                smaller = gcd
-            
-            for j in range(1, smaller+1):
-                if numx%j == 0 and gcd%j == 0:
-                    gcd = j
-            print(fontstyle.apply(f'Required HCF = {gcd}', 'yellow/bold'))
+            numx = float(input(txtexpo))
+            os.system('cls')
+            print(fontstyle.apply(f'{expotxt} ^ {numx} = {expotxt**numx}\n', 'yellow/bold'))
+            expotxt = expotxt ** numx
             continue
         else:
-            break 
-    
+            break
+        
+def table_loop():
+    os.system('cls')
+    while(True):
+        number = float(input(fontstyle.apply('Enter a Rational number to generate its multiplication table:  ', 'purple/bold')))
+        number_of_multiples = int(input(fontstyle.apply('Enter the number of multiples:  ', 'purple/bold'))) 
+        for i in range(1, number_of_multiples+1):
+            print(fontstyle.apply(f'{number} x {i} = {number * i}', 'yellow/bold/underline'))
+        choice = input(fontstyle.apply('Press Enter to continue else press any key to exit!\n', 'green/bold'))
+        if choice == '':
+            continue
+        else:
+            break
+
+def expotable():
+    os.system('cls')
+    while(True):
+        base = float(input(fontstyle.apply('Enter the base value:  ', 'green/bold')))
+        power = float(input(fontstyle.apply('Enter the power value:  ', 'green/bold')))
+        items = int(input(fontstyle.apply('Enter the number of values you want:  ', 'green/bold')))
+        
+        try:
+        
+            for i in range(1, items):
+                print(fontstyle.apply(f'{base} ^ {power} = {power ** base}', 'purple/bold/underline'))
+                base = base ** power
+        
+        except OverflowError:
+            print(fontstyle.apply('Can\'t continue to display!\nResults Too Large!!!!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n', 'red/bold/underline'))
+        
+        choice = input(fontstyle.apply('Press Enter to continue else press any key to exit!\n', 'green/bold'))
+        if choice == '':
+            os.system('cls')
+            print(fontstyle.apply('Re-running the program...\nRe-run Successful!', 'green'))
+            continue
+        else:
+            break
 
 
-hcf()
-            
+
