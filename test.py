@@ -1,109 +1,56 @@
-import pyttsx3 #pip install pyttsx3
-import speech_recognition as sr #pip install speechRecognition
-import datetime
-import wikipedia #pip install wikipedia
-import webbrowser
+import fontstyle
 import os
-import smtplib
 
-engine = pyttsx3.init('sapi5')
-voices = engine.getProperty('voices')
-# print(voices[1].id)
-engine.setProperty('voice', voices[0].id)
+def infinity_add1():
+	os.system('cls')
+	txtadd = fontstyle.apply(f'Enter a rational number:\n', 'cyan/bold')
+	disclaimer = fontstyle.apply('You can only add 2 numbers at a time', 'red/bold')
+	continuetxt = fontstyle.apply('Press ENTER to add another Rational Number', 'white/bold')
+	program_finished = fontstyle.apply('Program sucessfuly closed', 'green/bold')
+	print(f'{disclaimer}\n')
+	num1 = float(input(txtadd))
+	num2 = float(input(txtadd))
+	os.system('cls')
+	sumtxt = (num1 + num2)
+	print(fontstyle.apply(f'{num1} + {num2} = {sumtxt}', 'yellow/bold'))
+	while(True):
+		choice = input(continuetxt)
+		if choice == '':
+      
+			numx = float(input(txtadd))
+			os.system('cls')
+			print(disclaimer)
+			print(fontstyle.apply(f'{sumtxt} + {numx} = {sumtxt+numx}\n', 'yellow/bold'))
+            
+			continue
+		else:	
+			print(program_finished)	
+			break
 
-
-def speak(audio):
-    engine.say(audio)
-    engine.runAndWait()
-
-
-def wishMe():
-    hour = int(datetime.datetime.now().hour)
-    if hour>=0 and hour<12:
-        speak("Good Morning!")
-
-    elif hour>=12 and hour<18:
-        speak("Good Afternoon!")   
-
-    else:
-        speak("Good Evening!")  
-
-    speak("I am Jarvis Sir. Please tell me how may I help you")       
-
-def takeCommand():
-    #It takes microphone input from the user and returns string output
-
-    r = sr.Recognizer()
-    with sr.Microphone() as source:
-        print("Listening...")
-        r.pause_threshold = 1
-        audio = r.listen(source)
-
-    try:
-        print("Recognizing...")    
-        query = r.recognize_google(audio, language='en-in')
-        print(f"User said: {query}\n")
-
-    except Exception as e:
-        # print(e)    
-        print("Say that again please...")  
-        return "None"
-    return query
-
-def sendEmail(to, content):
-    server = smtplib.SMTP('smtp.gmail.com', 587)
-    server.ehlo()
-    server.starttls()
-    server.login('krishnaanand290809@gmail.com', 'kvjmp.6a')
-    server.sendmail('youremail@gmail.com', to, content)
-    server.close()
-
-if __name__ == "__main__":
-    wishMe()
-    while True:
-    # if 1:
-        query = takeCommand().lower()
-
-        # Logic for executing tasks based on query
-        if 'wikipedia' in query:
-            speak('Searching Wikipedia...')
-            query = query.replace("wikipedia", "")
-            results = wikipedia.summary(query, sentences=2)
-            speak("According to Wikipedia")
-            print(results)
-            speak(results)
-
-        elif 'open youtube' in query:
-            webbrowser.open("youtube.com")
-
-        elif 'open google' in query:
-            webbrowser.open("google.com")
-
-        elif 'open stackoverflow' in query:
-            webbrowser.open("stackoverflow.com")   
-
-
-        # elif 'play music' in query:
-        #     music_dir = 'D:\\Non Critical\\songs\\Favorite Songs2'
-        #     songs = os.listdir(music_dir)
-        #     print(songs)    
-        #     os.startfile(os.path.join(music_dir, songs[0]))
-
-        elif 'the time' in query:
-            strTime = datetime.datetime.now().strftime("%H:%M:%S")    
-            speak(f"Sir, the time is {strTime}")
-
-        elif 'open code' in query:
-            codePath = "C:\\Users\\consu\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs"
-            os.startfile(codePath)
-
-        elif 'email to Mom' in query:
-            try:
-                speak("What should I say?")
-                content = takeCommand()
-                to = "vkradhakrishna6@gmail.com"    
-                sendEmail(to, content)
-                speak("Email has been sent!")
-            except Exception as e:
-                print(e)
-                speak("Sorry Krishna, I couldn't send the Email!")    
+def infinity_add():
+    os.system('cls')
+    txtadd = fontstyle.apply(f'Enter a rational number:\n', 'cyan/bold')
+    disclaimer = fontstyle.apply('You can only add 2 numbers at a time', 'red/bold')
+    continuetxt = fontstyle.apply('Press ENTER to add another Rational Number', 'white/bold')
+    program_finished = fontstyle.apply('Program sucessfuly closed', 'green/bold')
+    num1 = float(input(txtadd))
+    num2 = float(input(txtadd))
+    os.system('cls')
+    sumtxt = (num1 + num2)
+    print(fontstyle.apply(f'{num1} + {num2} = {sumtxt}', 'yellow/bold'))
+    while(True):
+        choice = input(continuetxt)
+        if choice == '':
+            numx = float(input(txtadd))
+            os.system('cls')
+            print(disclaimer)
+            print(fontstyle.apply(f'{sumtxt} + {numx} = {sumtxt+numx}\n', 'yellow/bold'))
+            sumtxt = sumtxt + numx
+            continue
+        else:
+            print(program_finished)
+            break
+        
+ 
+ 
+infinity_add()

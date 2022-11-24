@@ -3,28 +3,28 @@ import fontstyle
 import math
 
 def infinity_add():
-	os.system('cls')
-	txtadd=fontstyle.apply(f'Enter a rational number:\n', 'cyan/bold')
-	disclaimer=fontstyle.apply('You can only add 2 numbers at a time', 'red/bold')
-	continuetxt=fontstyle.apply('Press ENTER to add another Rational Number', 'white/bold')
-	program_finished = fontstyle.apply('Program sucessfuly closed', 'green/bold')
-	print(f'{disclaimer}\n')
-	num1 = float(input(txtadd))
-	num2 = float(input(txtadd))
-	os.system('cls')
-	sumtxt = (num1 + num2)
-	print(fontstyle.apply(f'{num1} + {num2} = {sumtxt}', 'yellow/bold'))
-	while(True):
-		choice = input(continuetxt)
-		if choice == '':
-			numx = float(input(txtadd))
-			os.system('cls')
-			print(disclaimer)
-			print(fontstyle.apply(f'{sumtxt} + {numx} = {sumtxt+numx}\n', 'yellow/bold'))
-			continue
-		else:	
-			print(program_finished)	
-			break
+    os.system('cls')
+    txtadd = fontstyle.apply(f'Enter a rational number:\n', 'cyan/bold')
+    disclaimer = fontstyle.apply('You can only add 2 numbers at a time', 'red/bold')
+    continuetxt = fontstyle.apply('Press ENTER to add another Rational Number', 'white/bold')
+    program_finished = fontstyle.apply('Program sucessfuly closed', 'green/bold')
+    num1 = float(input(txtadd))
+    num2 = float(input(txtadd))
+    os.system('cls')
+    sumtxt = (num1 + num2)
+    print(fontstyle.apply(f'{num1} + {num2} = {sumtxt}', 'yellow/bold'))
+    while(True):
+        choice = input(continuetxt)
+        if choice == '':
+            numx = float(input(txtadd))
+            os.system('cls')
+            print(disclaimer)
+            print(fontstyle.apply(f'{sumtxt} + {numx} = {sumtxt+numx}\n', 'yellow/bold'))
+            sumtxt = sumtxt + numx
+            continue
+        else:
+            print(program_finished)
+            break
 
 def infinity_subtract():
     os.system('cls')
@@ -45,6 +45,7 @@ def infinity_subtract():
             print(disclaimer)
             print(fontstyle.apply('Format: [First Number] - [Second Number]', 'red/bold/underline'))
             print(fontstyle.apply(f'{difftxt} - {numx} = {difftxt-numx}\n', 'yellow/bold'))
+            difftxt = difftxt - numx
             continue
         else:
             break
@@ -245,5 +246,60 @@ def expotable():
         else:
             break
 
+
+if __name__ == "__main__":
+    add = fontstyle.apply('1. Addition', 'blue/bold/underline')
+    sub = fontstyle.apply('2. Subtraction', 'red/bold/underline')
+    multi = fontstyle.apply('3. Multiplication', 'green/bold/underline')
+    divi = fontstyle.apply('4. Division', 'white/bold/underline')
+    expo = fontstyle.apply('5. Exponents', 'cyan/bold/underline')
+    hcf = fontstyle.apply('6. HCF/GCD', 'purple/bold/underline')
+    lcm = fontstyle.apply('7. LCM', 'yellow/bold/underline')
+    factorial1 = fontstyle.apply('8. Factorial', 'red/bold/underline')
+    table = fontstyle.apply('9. Multiplication Tables', 'red/bold/underline/italic')
+    expotab = fontstyle.apply('10. Exponential Tables', 'blue/bold/underline/italic')
+    txt1 = fontstyle.apply('Enter the number in front of the operation you which you want to use:', 'black/white_bg/bold')
+    
+    while(True):
+        os.system('cls')
+        print(fontstyle.apply(f'{txt1}\n{add}\n{sub}\n{multi}\n{divi}\n{expo}\n{hcf}\n{lcm}\n{factorial1}\n\n{table}\n{expotab}\n'))
+        choice = int(input(fontstyle.apply('---> ', 'white/bold')))
+        
+        if choice == 1:
+            infinity_add()
+            continue
+        elif choice == 2:
+            infinity_subtract()
+            continue
+        elif choice == 3:
+            infinity_multiply()
+            continue
+        elif choice == 4:
+            infinity_divide()
+            continue
+        elif choice == 5:
+            infinity_exponents()
+            continue
+        elif choice == 6:
+            advance_hcf2()
+            temp = input(fontstyle.apply('Press Enter to continue', 'green/bold'))
+            continue
+        elif choice == 7:
+            advance_lcm2()
+            temp = input(fontstyle.apply('Press Enter to continue', 'green/bold'))
+            continue
+        elif choice == 8:
+            factorial()
+            continue
+        elif choice == 9:
+            table_loop()
+            continue
+        elif choice == 10:
+            expotable()
+            continue
+        else:
+            print(fontstyle.apply('Invalid input!\nPress Enter to retry:\n--> ', 'blue/cyan_bg/bold'))
+            input()
+            continue
 
 
