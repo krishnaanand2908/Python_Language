@@ -1,4 +1,4 @@
-f = open('C:\\Users\\consu\\Desktop\\Krishna Super\\Python_Language\\Code-With-Harry-Tuts\\goodBoy')
+f = open('C:\\Users\\consu\\Desktop\\Krishna Super\\Python_Language\\goodBoy.txt')
 print(f.readline())
 # print(f.tell())
 print(f.seek(10))

@@ -5,55 +5,85 @@ import os
 os.system('cls')
 
 def RPS():
-    options = ['Rock', 'Paper', 'Scissors']
-    computer = random.choice(options)
+    
+    number_of_turns = 10
+    options = ['Rock', 'Paper', 'Scissors',]    
+    
     upoint = 0
     cpoint = 0
-    turns = 0
-    while(turns <= 10):
+    turns = 1
+    while(turns <= number_of_turns):
         try:
-            user = int(input(fnt.apply('Enter 1 for Rock || 2 for Paper || 3 for Scissors: ', 'blue/bold')))
-        except TypeError:
+            user = input(fnt.apply('Enter 1 for Rock || 2 for Paper || 3 for Scissors: ', 'blue/bold'))
+        except (TypeError, ValueError):
             continue
         
-        # If Ties
-        if computer == 'Rock' and user == 1:
-            print(fnt.apply('TIE!', 'cyan/bold'))
-        elif computer == 'Paper' and user == 2:
-            print(fnt.apply('TIE!', 'cyan/bold'))
-        elif computer == 'Scissors' and user == 3:
-            print(fnt.apply('TIE!', 'cyan/bold'))
-
-        # If computer chooses rock
-        if computer == 'Rock':
-            if user == 2:
-                upoint += 1
-                print(fnt.apply('You win!', 'green/bold'))
-            elif user == 3:
-                cpoint += 1
-                print(fnt.apply('You loose!', 'red/bold'))
-        elif computer == 'Paper':
-            if user == '1':
-                cpoint += 1
-                print(fnt.apply('You loose!', 'red/bold'))
-            elif user == '3':
-                upoint += 1
-                print(fnt.apply('You win!', 'green/bold'))
-        else:
-            if user == '1':
-                upoint += 1
-                print(fnt.apply('You win!', 'green/bold'))
-            elif user == '3':
-                cpoint += 1
-                print(fnt.apply('You loose!', 'red/bold'))
-        turns += 1
-    if cpoint < upoint:
-        print(f'You WON the Game by {upoint - cpoint} points!')     
-    elif cpoint > upoint:
-        print(f'You LOST the Game by {cpoint - upoint} points!')
-    else:
-        print(f'TIE Breaker occured!\n Computer scored: {cpoint}\n User scored: {upoint}')      
+        computer = random.choices(options)
+        random.shuffle(options)
         
+        if computer == 'Rock':
+            
+            if user == '1':
+                print(fnt.apply('None of you got a point.', 'cyan/bold'))
+                print(fnt.apply(f'Computer: {cpoint} || User: {upoint}', 'yellow/bold'))
+                print(fnt.apply(f'Turn {number_of_turns - turns}', 'white/bold'))
+            elif user == '2':
+                print(fnt.apply('You got a point!', 'green/bold'))
+                upoint += 1
+                print(fnt.apply(f'Computer: {cpoint} || User: {upoint}', 'yellow/bold'))
+                print(fnt.apply(f'Turn {number_of_turns - turns}', 'white/bold'))
+            elif user == '3':
+                print(fnt.apply('Compouter got a point!', 'red/bold'))
+                cpoint += 1
+                print(fnt.apply(f'Computer: {cpoint} || User: {upoint}', 'yellow/bold'))
+                print(fnt.apply(f'Turn {number_of_turns - turns}', 'white/bold'))
+        
+        elif computer == 'Paper':
+            if user == '2':
+                print(fnt.apply('None of you got a point.', 'cyan/bold'))
+                print(fnt.apply(f'Computer: {cpoint} || User: {upoint}', 'yellow/bold'))
+                print(fnt.apply(f'Turn {number_of_turns - turns}', 'white/bold'))
+            elif user == '3':
+                print(fnt.apply('You got a point!', 'green/bold'))
+                upoint += 1
+                print(fnt.apply(f'Computer: {cpoint} || User: {upoint}', 'yellow/bold'))
+                print(fnt.apply(f'Turn {number_of_turns - turns}', 'white/bold'))
+            elif user == '1':
+                print(fnt.apply('Compouter got a point!', 'red/bold'))
+                cpoint += 1
+                print(fnt.apply(f'Computer: {cpoint} || User: {upoint}', 'yellow/bold'))
+                print(fnt.apply(f'Turn {number_of_turns - turns}', 'white/bold'))
+        
+        else:
+            if user == '3':
+                print(fnt.apply('None of you got a point.', 'cyan/bold'))
+                print(fnt.apply(f'Computer: {cpoint} || User: {upoint}', 'yellow/bold'))
+                print(fnt.apply(f'Turn {number_of_turns - turns}', 'white/bold'))
+            elif user == '1':
+                print(fnt.apply('You got a point!', 'green/bold'))
+                upoint += 1
+                print(fnt.apply(f'Computer: {cpoint} || User: {upoint}', 'yellow/bold'))
+                print(fnt.apply(f'Turn {number_of_turns - turns}', 'white/bold'))
+            elif user == '2':
+                print(fnt.apply('Compouter got a point!', 'red/bold'))
+                cpoint += 1
+                print(fnt.apply(f'Computer: {cpoint} || User: {upoint}', 'yellow/bold'))
+                print(fnt.apply(f'Turn {number_of_turns - turns}', 'white/bold'))
+        
+        turns += 1
+    
+    if upoint == cpoint:
+        print(fnt.apply('Match Draw!', 'cyan/bold'))
+        print(fnt.apply('\t\t\t\t[Score Board]', 'purple/bold'))
+        print(fnt.apply(f'\t\t\t   Computer: {cpoint} || User: {upoint}', 'yellow/bold'))
+    elif upoint > cpoint:
+        print(fnt.apply('Congratulations, you have won the match!', 'green/bold'))
+        print(fnt.apply('\t\t\t\t[Score Board]', 'purple/bold'))
+        print(fnt.apply(f'\t\t\t   Computer: {cpoint} || User: {upoint}', 'yellow/bold'))
+    else:
+        print(fnt.apply('You Lose!', 'red/bold'))
+        print(fnt.apply('\t\t\t\t[Score Board]', 'purple/bold'))
+        print(fnt.apply(f'\t\t\t   Computer: {cpoint} || User: {upoint}', 'yellow/bold'))
 RPS()
                 
                 
